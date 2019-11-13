@@ -1,0 +1,93 @@
+A51 MACRO ASSEMBLER  E4                                                                   11/08/2019 10:05:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E4.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E4.a51 SET(SMALL) DEBUG PRINT(.\Listings\E4.lst) OBJECT(.\Objects\E4.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 00H
+0000 0130              2           ajmp main0
+                       3             
+                       4       
+0030                   5           org 30H
+0030 20A009            6     main0: jb P2.0,main1
+0033 120092            7            lcall delay
+0036 20A003            8            jb P2.0,main1 
+0039 75809F            9            mov P0,#10011111B
+                      10     
+003C 20A109           11     main1: jb P2.1,main2
+003F 120092           12            lcall delay
+0042 20A1F7           13            jb P2.1,main1 
+0045 758025           14            mov P0,#00100101B
+                      15             
+0048 20A209           16     main2: jb P2.2,main3
+004B 120092           17            lcall delay
+004E 20A2EB           18            jb P2.2,main1 
+0051 75800D           19            mov P0,#00001101B
+                      20     
+0054 20A309           21     main3: jb P2.3,main4
+0057 120092           22            lcall delay
+005A 20A3DF           23            jb P2.3,main1 
+005D 758099           24            mov P0,#10011001B
+                      25     
+0060 20A409           26     main4: jb P2.4,main5
+0063 120092           27            lcall delay
+0066 20A4D3           28            jb P2.4,main1 
+0069 758049           29            mov P0,#01001001B
+                      30     
+006C 20A509           31     main5: jb P2.5,main6
+006F 120092           32            lcall delay
+0072 20A5C7           33            jb P2.5,main1 
+0075 758041           34            mov P0,#01000001B
+                      35     
+0078 20A609           36     main6: jb P2.6,main7
+007B 120092           37            lcall delay
+007E 20A6BB           38            jb P2.6,main1 
+0081 75801F           39            mov P0,#00011111B
+                      40     
+0084 20A7A9           41     main7: jb P2.7,main0
+0087 120092           42            lcall delay
+008A 20A7AF           43            jb P2.7,main1 
+008D 758001           44            mov P0,#00000001B
+                      45     
+0090 0130             46           ajmp main0
+                      47                       
+0092 7C01             48     delay: mov r4,#1
+0094 7A00             49        l3: mov r2,#00H
+0096 7B00             50        l1: mov r3,#00H
+0098 DBFE             51        l2: djnz r3,l2
+009A DAFA             52            djnz r2,l1
+009C DCF6             53            djnz r4,l3
+009E 22               54            ret
+                      55            end
+A51 MACRO ASSEMBLER  E4                                                                   11/08/2019 10:05:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0092H   A   
+L1 . . . . . . . .  C ADDR   0096H   A   
+L2 . . . . . . . .  C ADDR   0098H   A   
+L3 . . . . . . . .  C ADDR   0094H   A   
+MAIN0. . . . . . .  C ADDR   0030H   A   
+MAIN1. . . . . . .  C ADDR   003CH   A   
+MAIN2. . . . . . .  C ADDR   0048H   A   
+MAIN3. . . . . . .  C ADDR   0054H   A   
+MAIN4. . . . . . .  C ADDR   0060H   A   
+MAIN5. . . . . . .  C ADDR   006CH   A   
+MAIN6. . . . . . .  C ADDR   0078H   A   
+MAIN7. . . . . . .  C ADDR   0084H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

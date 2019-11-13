@@ -1,0 +1,85 @@
+A51 MACRO ASSEMBLER  E2                                                                   11/07/2019 08:50:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E2.a51 SET(SMALL) DEBUG PRINT(.\Listings\E2.lst) OBJECT(.\Objects\E2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 0000H
+                       2                             
+0000 0130              3           ajmp main
+                       4               
+0030                   5           org 30H
+0030 75B002            6     main: mov P3, #00000010B
+0033 758001            7           mov P0, #00000001B
+0036 12009B            8           lcall delay
+0039 758002            9           mov P0, #00000010B
+003C 12009B           10           lcall delay
+003F 758004           11           mov P0, #00000100B
+0042 12009B           12           lcall delay
+0045 758008           13           mov P0, #00001000B
+0048 12009B           14           lcall delay
+004B 758010           15           mov P0, #00010000B
+004E 12009B           16           lcall delay
+0051 758020           17           mov P0, #00100000B
+0054 12009B           18           lcall delay
+0057 758040           19           mov P0, #01000000B
+005A 12009B           20           lcall delay
+005D 758080           21           mov P0, #10000000B
+0060 12009B           22           lcall delay
+0063 7580C0           23           mov P0, #11000000B
+0066 12009B           24           lcall delay
+0069 7580E0           25           mov P0, #11100000B
+006C 12009B           26           lcall delay
+006F 7580F0           27           mov P0, #11110000B
+0072 12009B           28           lcall delay
+0075 7580F8           29           mov P0, #11111000B
+0078 12009B           30           lcall delay
+007B 7580FC           31           mov P0, #11111100B
+007E 12009B           32           lcall delay
+0081 7580FE           33           mov P0, #11111110B
+0084 12009B           34           lcall delay
+0087 7580FF           35           mov P0, #11111111B
+008A 12009B           36           lcall delay
+008D 7580AA           37           mov P0, #10101010B
+0090 12009B           38           lcall delay
+0093 758055           39           mov P0, #01010101B
+0096 12009B           40           lcall delay
+0099 0130             41           ajmp main
+                      42                       
+009B C0D0             43     delay: push psw
+009D 7C02             44            mov r4,#2
+009F 7A00             45        l3: mov r2,#00H
+00A1 7B00             46        l1: mov r3,#00H
+00A3 DBFE             47        l2: djnz r3,l2
+00A5 DAFA             48            djnz r2,l1
+00A7 DCF6             49            djnz r4,l3
+00A9 D0D0             50            pop psw
+00AB 22               51            ret
+                      52     
+                      53            end
+A51 MACRO ASSEMBLER  E2                                                                   11/07/2019 08:50:58 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   009BH   A   
+L1 . . . . . . . .  C ADDR   00A1H   A   
+L2 . . . . . . . .  C ADDR   00A3H   A   
+L3 . . . . . . . .  C ADDR   009FH   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

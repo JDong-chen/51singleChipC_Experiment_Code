@@ -1,0 +1,66 @@
+A51 MACRO ASSEMBLER  E2                                                                   11/07/2019 09:08:40 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E2.a51 SET(SMALL) DEBUG PRINT(.\Listings\E2.lst) OBJECT(.\Objects\E2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 0000H
+                       2                             
+0000 0130              3           ajmp main
+                       4               
+0030                   5           org 30H
+0030                   6     main: ;mov P3, #00000010B
+0030 758001            7           mov P0, #00000001B
+0033 120062            8           lcall delay
+0036 758002            9           mov P0, #00000010B
+0039 120062           10           lcall delay
+003C 758004           11           mov P0, #00000100B
+003F 120062           12           lcall delay
+0042 758008           13           mov P0, #00001000B
+0045 120062           14           lcall delay
+0048 758010           15           mov P0, #00010000B
+004B 120062           16           lcall delay
+004E 758020           17           mov P0, #00100000B
+0051 120062           18           lcall delay
+0054 758040           19           mov P0, #01000000B
+0057 120062           20           lcall delay
+005A 758080           21           mov P0, #10000000B
+005D 120062           22           lcall delay
+0060 0130             23           ajmp main
+                      24                       
+0062 C0D0             25     delay: push psw
+0064 7C02             26            mov r4,#2
+0066 7A00             27        l3: mov r2,#00H
+0068 7B00             28        l1: mov r3,#00H
+006A DBFE             29        l2: djnz r3,l2
+006C DAFA             30            djnz r2,l1
+006E DCF6             31            djnz r4,l3
+0070 D0D0             32            pop psw
+0072 22               33            ret
+                      34     
+                      35            end
+A51 MACRO ASSEMBLER  E2                                                                   11/07/2019 09:08:40 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0062H   A   
+L1 . . . . . . . .  C ADDR   0068H   A   
+L2 . . . . . . . .  C ADDR   006AH   A   
+L3 . . . . . . . .  C ADDR   0066H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

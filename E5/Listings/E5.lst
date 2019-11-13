@@ -1,0 +1,119 @@
+A51 MACRO ASSEMBLER  E5                                                                   11/08/2019 10:41:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E5.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E5.a51 SET(SMALL) DEBUG PRINT(.\Listings\E5.lst) OBJECT(.\Objects\E5.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           ORG 0000H
+0000 0130              2           AJMP MAIN
+                       3     
+0030                   4           ORG 30H
+0030 75A0F0            5     MAIN: MOV P2,#0F0H 
+0033 120094            6           LCALL DELAY 
+0036 AC00              7           MOV  R4,00H
+0038 E5A0              8           MOV  A,P2  
+003A 54F0              9           ANL  A,#0F0H  ;屏蔽行线的影响
+003C B4F009           10           CJNE A,#0F0H,L ;如果有键按下，就跳转到L
+                      11     
+                      12     
+003F                  13     DESPLAY:
+003F EF               14             MOV  A,R7
+0040 90009D           15             MOV  DPTR,#TABLE 
+0043 93               16             MOVC A,@A+DPTR
+0044 F590             17             MOV  P1,A 
+0046 0130             18             AJMP MAIN 
+                      19     
+0048 120094           20     L: LCALL DELAY  ;延时去除抖动
+004B E5A0             21        MOV  A,P2  ;重新取值
+004D 20E404           22        JB  ACC.4,L1 ;P2.4这一列有键按下？没有则跳转到L1
+0050 7B00             23        MOV  R3,#00H  ;R3用作记列号
+0052 0169             24        AJMP Q1
+                      25     
+0054 20E504           26     L1:  JB  ACC.5,L2
+0057 7B01             27          MOV  R3,#01H
+0059 0169             28          AJMP Q1
+                      29     
+005B 20E604           30     L2:  JB  ACC.6,L3
+005E 7B02             31          MOV  R3,#02H
+0060 0169             32          AJMP Q1
+                      33     
+0062 20E7CB           34     L3:  JB  ACC.7,MAIN
+0065 7B03             35          MOV  R3,#03H
+0067 0169             36          AJMP Q1
+                      37     
+0069 75A00F           38     Q1:  MOV  P2,#0FH  ;给行送高电平
+006C 120094           39          LCALL DELAY  ;延时，稳定电路
+006F E5A0             40          MOV  A,P2  ;取值
+0071 540F             41          ANL  A,#0FH  ;屏蔽高四位
+0073 20E004           42          JB  ACC.0,Q2 ;判断是不是第0行，不是则转移
+0076 7C00             43          MOV  R4,#00H  ;如果是，那把0送给R4(R4存行（转换为键号）)
+0078 018F             44          AJMP JIA
+                      45     
+007A 20E104           46     Q2:  JB ACC.1,Q3
+007D 7C04             47          MOV  R4,#04H
+007F 018F             48          AJMP JIA
+                      49     
+0081 20E204           50     Q3:  JB ACC.2,Q4
+0084 7C08             51          MOV R4,#08H
+0086 018F             52          AJMP JIA
+                      53     
+0088 20E3A5           54     Q4:  JB  ACC.3,MAIN
+008B 7C0C             55          MOV  R4,#0CH
+008D 018F             56          AJMP JIA
+                      57     
+A51 MACRO ASSEMBLER  E5                                                                   11/08/2019 10:41:36 PAGE     2
+
+008F EB               58     JIA: MOV  A,R3   
+0090 2C               59          ADD  A,R4
+0091 FF               60          MOV  R7,A  
+0092 0130             61          AJMP MAIN
+                      62     
+0094 7E20             63     DELAY: MOV  R6,#20H  
+                      64     
+0096 7DBB             65      Q6:  MOV R5,#0BBH
+0098 DDFE             66           DJNZ R5,$
+009A DEFA             67           DJNZ R6,Q6
+009C 22               68           RET
+                      69     
+009D C0F9A4B0         70     TABLE: DB 0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8, 0x80, 0x90, 0x88, 0x83, 0xc6, 0xa
+                             1, 0x86, 0x8e
+00A1 999282F8                
+00A5 80908883                
+00A9 C6A1868E                
+                      71     
+                      72                  END  
+A51 MACRO ASSEMBLER  E5                                                                   11/08/2019 10:41:36 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+DELAY. . . . . . .  C ADDR   0094H   A   
+DESPLAY. . . . . .  C ADDR   003FH   A   
+JIA. . . . . . . .  C ADDR   008FH   A   
+L. . . . . . . . .  C ADDR   0048H   A   
+L1 . . . . . . . .  C ADDR   0054H   A   
+L2 . . . . . . . .  C ADDR   005BH   A   
+L3 . . . . . . . .  C ADDR   0062H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+Q1 . . . . . . . .  C ADDR   0069H   A   
+Q2 . . . . . . . .  C ADDR   007AH   A   
+Q3 . . . . . . . .  C ADDR   0081H   A   
+Q4 . . . . . . . .  C ADDR   0088H   A   
+Q6 . . . . . . . .  C ADDR   0096H   A   
+TABLE. . . . . . .  C ADDR   009DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

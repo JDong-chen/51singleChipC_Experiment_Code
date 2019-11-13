@@ -1,0 +1,137 @@
+A51 MACRO ASSEMBLER  E6                                                                   11/08/2019 11:01:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E6.a51 SET(SMALL) DEBUG PRINT(.\Listings\E6.lst) OBJECT(.\Objects\E6.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 00H
+0000 0130              2           ajmp main0
+                       3     
+0003                   4           org 03H
+0003 013B              5           ajmp X_IT0
+                       6     
+0030                   7           org 30H
+0030 D288              8     main0: setb IT0
+0032 D2A8              9            setb EX0
+0034 D2AF             10            setb EA
+                      11             
+0036 759850           12            MOV SCON, #0x50
+                      13         ANL PCON, #0x7F
+*** _________________________^
+*** __________________________^
+*** ___________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 13 (E6.a51, LINE 13): SYNTAX ERROR
+*** ERROR #A3 IN 13 (E6.a51, LINE 13): ILLEGAL CHARACTER
+*** ERROR #A3 IN 13 (E6.a51, LINE 13): ILLEGAL CHARACTER
+*** ERROR #A3 IN 13 (E6.a51, LINE 13): ILLEGAL CHARACTER
+*** ERROR #A3 IN 13 (E6.a51, LINE 13): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      14         MOV TMOD, #0x20
+*** _________________________^
+*** __________________________^
+*** ___________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 14 (E6.a51, LINE 14): SYNTAX ERROR
+*** ERROR #A3 IN 14 (E6.a51, LINE 14): ILLEGAL CHARACTER
+*** ERROR #A3 IN 14 (E6.a51, LINE 14): ILLEGAL CHARACTER
+*** ERROR #A3 IN 14 (E6.a51, LINE 14): ILLEGAL CHARACTER
+*** ERROR #A3 IN 14 (E6.a51, LINE 14): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      15         MOV TH1, #0xFD
+*** _________________________^
+*** __________________________^
+*** ___________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 15 (E6.a51, LINE 15): SYNTAX ERROR
+*** ERROR #A3 IN 15 (E6.a51, LINE 15): ILLEGAL CHARACTER
+*** ERROR #A3 IN 15 (E6.a51, LINE 15): ILLEGAL CHARACTER
+*** ERROR #A3 IN 15 (E6.a51, LINE 15): ILLEGAL CHARACTER
+*** ERROR #A3 IN 15 (E6.a51, LINE 15): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      16         MOV TL1, #0xFD
+*** _________________________^
+*** __________________________^
+*** ___________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 16 (E6.a51, LINE 16): SYNTAX ERROR
+*** ERROR #A3 IN 16 (E6.a51, LINE 16): ILLEGAL CHARACTER
+*** ERROR #A3 IN 16 (E6.a51, LINE 16): ILLEGAL CHARACTER
+A51 MACRO ASSEMBLER  E6                                                                   11/08/2019 11:01:11 PAGE     2
+
+*** ERROR #A3 IN 16 (E6.a51, LINE 16): ILLEGAL CHARACTER
+*** ERROR #A3 IN 16 (E6.a51, LINE 16): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      17         SETB TR1
+*** _________________________^
+*** __________________________^
+*** ___________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 17 (E6.a51, LINE 17): SYNTAX ERROR
+*** ERROR #A3 IN 17 (E6.a51, LINE 17): ILLEGAL CHARACTER
+*** ERROR #A3 IN 17 (E6.a51, LINE 17): ILLEGAL CHARACTER
+*** ERROR #A3 IN 17 (E6.a51, LINE 17): ILLEGAL CHARACTER
+*** ERROR #A3 IN 17 (E6.a51, LINE 17): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      18          MOV A, #01H
+*** _________________________^
+*** __________________________^
+*** ____________________________^
+*** _____________________________^
+*** ERROR #A9 IN 18 (E6.a51, LINE 18): SYNTAX ERROR
+*** ERROR #A3 IN 18 (E6.a51, LINE 18): ILLEGAL CHARACTER
+*** ERROR #A3 IN 18 (E6.a51, LINE 18): ILLEGAL CHARACTER
+*** ERROR #A3 IN 18 (E6.a51, LINE 18): ILLEGAL CHARACTER
+0039 80FE             19            SJMP $
+                      20      
+                      21     
+                      22      
+003B F599             23     X_IT0:MOV SBUF, A
+003D 04               24           INC A
+003E 120042           25           lcall delay
+0041 32               26           RETI
+                      27     
+                      28     
+                      29                       
+0042 7C04             30     delay: mov r4,#4
+0044 7A00             31        l3: mov r2,#00H
+0046 7B00             32        l1: mov r3,#00H
+0048 DBFE             33        l2: djnz r3,l2
+004A DAFA             34            djnz r2,l1
+004C DCF6             35            djnz r4,l3
+004E 22               36            ret
+                      37            end
+A51 MACRO ASSEMBLER  E6                                                                   11/08/2019 11:01:11 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0042H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+L1 . . . . . . . .  C ADDR   0046H   A   
+L2 . . . . . . . .  C ADDR   0048H   A   
+L3 . . . . . . . .  C ADDR   0044H   A   
+MAIN0. . . . . . .  C ADDR   0030H   A   
+PCON . . . . . . .  D ADDR   0087H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+X_IT0. . . . . . .  C ADDR   003BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 34 ERROR(S)

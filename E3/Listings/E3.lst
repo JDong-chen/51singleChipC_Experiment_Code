@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  E3                                                                   11/08/2019 08:44:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E3.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E3.a51 SET(SMALL) DEBUG PRINT(.\Listings\E3.lst) OBJECT(.\Objects\E3.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 0000H
+                       2                             
+0000 0130              3           ajmp main
+                       4               
+0030                   5           org 30H
+0030 758003            6     main: mov P0, #00000011B
+0033 12006E            7           lcall delay
+0036 75809F            8           mov P0, #10011111B
+0039 12006E            9           lcall delay
+003C 758025           10           mov P0, #00100101B
+003F 12006E           11           lcall delay
+0042 75800D           12           mov P0, #00001101B
+0045 12006E           13           lcall delay
+0048 758099           14           mov P0, #10011001B
+004B 12006E           15           lcall delay
+004E 758049           16           mov P0, #01001001B
+0051 12006E           17           lcall delay
+0054 758041           18           mov P0, #01000001B
+0057 12006E           19           lcall delay
+005A 75801F           20           mov P0, #00011111B
+005D 12006E           21           lcall delay
+0060 758001           22           mov P0, #00000001B
+0063 12006E           23           lcall delay
+0066 758009           24           mov P0, #00001001B
+0069 12006E           25           lcall delay
+006C 0130             26           ajmp main
+                      27                       
+006E 7C08             28     delay: mov r4,#8
+0070 7A00             29        l3: mov r2,#00H
+0072 7B00             30        l1: mov r3,#00H
+0074 DBFE             31        l2: djnz r3,l2
+0076 DAFA             32            djnz r2,l1
+0078 DCF6             33            djnz r4,l3
+007A 22               34            ret
+                      35            end
+A51 MACRO ASSEMBLER  E3                                                                   11/08/2019 08:44:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   006EH   A   
+L1 . . . . . . . .  C ADDR   0072H   A   
+L2 . . . . . . . .  C ADDR   0074H   A   
+L3 . . . . . . . .  C ADDR   0070H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

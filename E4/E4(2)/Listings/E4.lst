@@ -1,0 +1,79 @@
+A51 MACRO ASSEMBLER  E4                                                                   11/08/2019 09:59:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\E4.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE E4.a51 SET(SMALL) DEBUG PRINT(.\Listings\E4.lst) OBJECT(.\Objects\E4.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           org 00H
+0000 0130              2           ajmp main0
+                       3     
+0003                   4           org 03H
+0003 014A              5           ajmp X_IT0
+                       6     
+0030                   7           org 30H
+0030 D288              8     main0: setb IT0
+0032 D2A8              9            setb EX0
+0034 D2AF             10            setb EA
+                      11             
+0036 7800             12     CLR1:   MOV R0,#00H
+                      13      
+0038 90004F           14     DISPLAY: MOV DPTR,#TAB  
+003B E8               15                     MOV A,R0        
+003C F5F0             16                     MOV B, A   
+003E C3               17                     CLR C
+003F 9408             18                     SUBB A, #08H    
+0041 E5F0             19                     MOV A, B   
+0043 50F1             20                     JNC CLR1   
+                      21      
+0045 93               22                     MOVC A,@A+DPTR
+0046 F580             23                     MOV P0,A        
+                      24                     
+0048 80EE             25                     SJMP DISPLAY 
+                      26      
+004A 08               27     X_IT0:INC R0
+004B 120057           28           lcall delay
+004E 32               29           RETI
+004F 9F250D99         30     TAB:    DB 10011111B,00100101B,00001101B,10011001B,01001001B,01000001B,00011111B,00000001B
+0053 49411F01                
+                      31     
+                      32                       
+0057 7C04             33     delay: mov r4,#4
+0059 7A00             34        l3: mov r2,#00H
+005B 7B00             35        l1: mov r3,#00H
+005D DBFE             36        l2: djnz r3,l2
+005F DAFA             37            djnz r2,l1
+0061 DCF6             38            djnz r4,l3
+0063 22               39            ret
+                      40            end
+A51 MACRO ASSEMBLER  E4                                                                   11/08/2019 09:59:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CLR1 . . . . . . .  C ADDR   0036H   A   
+DELAY. . . . . . .  C ADDR   0057H   A   
+DISPLAY. . . . . .  C ADDR   0038H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+L1 . . . . . . . .  C ADDR   005BH   A   
+L2 . . . . . . . .  C ADDR   005DH   A   
+L3 . . . . . . . .  C ADDR   0059H   A   
+MAIN0. . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+TAB. . . . . . . .  C ADDR   004FH   A   
+X_IT0. . . . . . .  C ADDR   004AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
