@@ -46,7 +46,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>E6</OutputName>
+          <OutputName>E8</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -233,7 +233,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0xffff</Size>
+                <Size>0x10000</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -387,9 +387,9 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>E6.a51</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\E6.a51</FilePath>
+              <FileName>E8.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\E8.c</FilePath>
             </File>
           </Files>
         </Group>

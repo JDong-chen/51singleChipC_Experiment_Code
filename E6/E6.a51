@@ -8,21 +8,27 @@
 main0: setb IT0
        setb EX0
        setb EA
+
+       mov scon,#50H
+       anl pcon,#7FH
+       mov tmod,#20H
+       mov th1,#0FDH
+       mov tl1,#0FDH
+       setb tr1
+       clr ti
+       mov A,#30H
         
-       MOV SCON, #0x50
-    ANL PCON, #0x7F
-    MOV TMOD, #0x20
-    MOV TH1, #0xFD
-    MOV TL1, #0xFD
-    SETB TR1
-     MOV A, #01H
-       SJMP $
+loop1: 
+       jnb ti,$
+       clr ti
+       ajmp loop1
  
 
  
-X_IT0:MOV SBUF, A
+X_IT0:
+      LCALL delay
+      MOV SBUF, A
       INC A
-      lcall delay
       RETI
 
 
